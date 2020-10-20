@@ -5,7 +5,7 @@ implement are as follows.
 
 1. int getByte(int input, int byte_position)
 
-This function accepts an integer as an input. It returns the byte in the integer at the location pointed by byte_position. The byte is numbered from 0 (least significant byte) to 3 (most significant byte). For example, getByte(0x12345678,1) = 0x56 because the byte at position 1 is 0x56.
+This function accepts two integers as inputs. It returns the byte in the integer input at the location pointed by byte_position. The byte is numbered from 0 (least significant byte) to 3 (most significant byte). For example, getByte(0x12345678,1) = 0x56 because the byte at position 1 is 0x56.
 
 2. int bitSum16bit(int input)
 

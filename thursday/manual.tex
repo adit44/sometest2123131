@@ -74,21 +74,24 @@ determine the bit representations of two floating point numbers. The functions t
 implement are as follows.
 
 \begin{itemize}
-\item int getByte(int input, int byte_position)
+\item int fitsBits(int num, int n)
 
-This function accepts two integers as inputs. It returns the byte in the integer input at the location pointed by byte_position. The byte is numbered from 0 (least significant byte) to 3 (most significant byte). For example, getByte(0x12345678,1) = 0x56 because the byte at position 1 is 0x56.
+This function accepts two integers as inputs. It checks if num can be represented as an n-bit two's complement integer. The function returns 1 if it can, else the function returns 0. For example, fitsBits(5,3) = 0
+because the range of values that can be represented by 3-bit signed integer is [-4,3].
 
-\item int bitSum16bit(int input)
+\item int bitParity16bit(int input)
 
-This function accepts a 16-bit unsigned number as an input, and counts the number of 1-bits in 
-that number. For example, bitSum16bit(7) = 3 and bitSum16bit(17) = 2.
+This function accepts a 16-bit unsigned number as an input. It returns 1 if the input number has 
+an odd number of 1-bits, and returns 0 if the number of 1-bits is even. For example, 
+bitParity8bit(7) = 1 because 7 is 0b111 in bits, and therefore, has 3 1-bits (odd). Another example
+is bitParity8bit(17) = 0 because 17 is 0b10001, and has 2 1-bits (even).
 
 \end{itemize}
 
 Please note that you are not allowed to use loop statements in any of these functions. 
 
 In addition to writing these functions, you also have to determine the bit representations of 
-224 and -0.375 based on the 8-bit floating representation in the page 6 of lecture 6 slides, 
+-0.75 and 240 based on the 8-bit floating representation in the page 6 of lecture 6 slides, 
 and write the values of the bit representations as 1-byte hexadecimal numbers. In this 8-bit 
 representation, 1 bit is allocated for sign, 4 bits are for exponent, and 3 bits are for fraction.
 
