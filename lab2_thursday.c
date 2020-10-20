@@ -4,18 +4,16 @@
 #include <math.h>
 
 /* 
- * getByte - Extract byte n from word x
- *   Bytes numbered from 0 (LSB) to 3 (MSB)
- *   Examples: getByte(0x12345678,1) = 0x56
+ * fitsBits - return 1 if x can be represented as an 
+ *  n-bit, two's complement integer.
+ *   1 <= n <= 32
+ *   Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1
  *   Legal ops: ! ~ & ^ | + << >>
  */
-int getByte(int x, int n) {
-
-  /* Shift x n*8 positions right */
-  int shift = n << 3;
-  int xs = x >> shift;
-  /* Mask byte */
-  return xs & 0xFF;
+int fitsBits(int x, int n) {
+  int shift = 32 + ~n + 1;
+  int move = (x << shift) >> shift;
+  return !(x ^ move);
 }
 
 /*
