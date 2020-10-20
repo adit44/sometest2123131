@@ -3,14 +3,17 @@
 #include <ctype.h>
 #include <math.h>
 
-/*
- * conditional - computing the expression (cond) ? t : f, which 
- * equals t if cond is 1 and f if cond is 0.
- *   Do not use a loop!
+/* 
+ * fitsBits - return 1 if x can be represented as an 
+ *  n-bit, two's complement integer.
+ *   1 <= n <= 32
+ *   Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1
+ *   Legal ops: ! ~ & ^ | + << >>
  */
-int conditional(int cond, int t, int f) {
-	int mask = ~cond + 1;
-	return mask&t|~mask&f;
+int fitsBits(int x, int n) {
+  int shift = 32 + ~n + 1;
+  int move = (x << shift) >> shift;
+  return !(x ^ move);
 }
 
 /*
